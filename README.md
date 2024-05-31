@@ -1,1 +1,1 @@
-# collectr-frontend
+# collectr: DataSoc's CMS
