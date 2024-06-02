@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 
 import LandingPage from "./pages/landing";
-import BlogsPage from "./pages/blogs";
 import NotFoundPage from "./pages/notFound";
+import CoverPhotoPage from "./pages/coverphoto";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="/blogs" element={<BlogsPage />} />
+      <Route path="/coverphotos" element={<CoverPhotoPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
