@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-import { Home, MediaImage } from "iconoir-react";
+import { Home, LogOut, MediaImage } from "iconoir-react";
 
 import { cn } from "../lib/utils";
+import { logout } from "../api/auth";
 
 const navbarPages = [
   {
@@ -18,6 +19,8 @@ const navbarPages = [
 ];
 
 export default function AdminNavbar({ className }: { className?: string }) {
+  const navigate = useNavigate();
+
   return (
     <nav
       className={cn(
@@ -28,9 +31,19 @@ export default function AdminNavbar({ className }: { className?: string }) {
       <div className="bg-slate-50 px-8 py-4 text-center text-lg">
         <img src="/logo.png" className="h-10" />
       </div>
-      {navbarPages.map((page) => (
-        <Link key={page.to} {...page} />
-      ))}
+      <div className="flex-grow">
+        {navbarPages.map((page) => (
+          <Link key={page.to} {...page} />
+        ))}
+      </div>
+      <div className="w-full bg-slate-50 px-8 py-4 text-center text-lg">
+        <button
+          className="flex w-full flex-row items-center justify-center gap-2"
+          onClick={() => void logout().then(() => navigate("/"))}
+        >
+          <LogOut /> Logout
+        </button>
+      </div>
     </nav>
   );
 }
