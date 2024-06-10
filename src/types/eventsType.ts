@@ -11,6 +11,6 @@ export type Event = {
     public: boolean;
     lastEditTime: Date;
     photo: string;
-    tags: string[];
+    tags: unknown[];
   };
   

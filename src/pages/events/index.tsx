@@ -8,8 +8,6 @@ export default function EventsPage() {
     <div className="flex w-screen flex-row overflow-hidden">
       <AdminNavbar />
       <MainPage />
-      {/* <h1>Events</h1>
-      <p>Here are all the events</p> */}
     </div>
   );
 }
