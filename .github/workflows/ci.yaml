@@ -3,9 +3,12 @@ name: checks
 on: [push]
 
 jobs:
-  check:
-    name: Checks
+  build:
+    name: build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node_version: [20, 21]
 
     steps:
       - name: Checkout repo
@@ -13,6 +16,8 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node_version }}
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
@@ -20,8 +25,8 @@ jobs:
       - name: Lint (ESLint)
         run: npm run lint
 
-      - name: Build project
-        run: npm run build
-
       - name: Format (Prettier)
         run: npm run format:ci
+
+      - name: Build project
+        run: npm run build
