@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 
-import { Home, LogOut, MediaImage } from "iconoir-react";
+import { Home, LogOut, MediaImage, Cube } from "iconoir-react";
 
 import { cn } from "../lib/utils";
 import { logout } from "../api/auth";
@@ -16,6 +16,11 @@ const navbarPages = [
     children: "Cover Photos",
     to: "/coverphotos",
   },
+  {
+    icon: <Cube height={24} />,
+    children: "Resources",
+    to: "/resources",
+  }
 ];
 
 export default function AdminNavbar({ className }: { className?: string }) {
