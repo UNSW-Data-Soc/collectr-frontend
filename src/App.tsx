@@ -5,6 +5,7 @@ import NotFoundPage from "./pages/notFound";
 import CoverPhotoPage from "./pages/coverphoto";
 import LoginPage from "./pages/login";
 import ResourcesPage from "./pages/resources";
+import EventsPage from "./pages/events";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/coverphotos" element={<CoverPhotoPage />} />
       <Route path="/resources" element={<ResourcesPage />} />
+      <Route path="/events" element={<EventsPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
