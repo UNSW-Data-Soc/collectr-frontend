@@ -47,11 +47,7 @@ export default function ResourceCard({
       </a>
       <div className="mt-2">
         {resource.tags.map(({ tag }) => (
-          <span
-            key={tag.id}
-            className="inline-block px-2 py-1 mr-2 text-xs rounded"
-            style={{ backgroundColor: tag.colour, color: "#FFFFFF" }}
-          >
+          <span key={tag.id} className="inline-block px-2 py-1 mr-2 text-xs rounded" style={{ backgroundColor: tag.colour, color: "#FFFFFF" }}>
             {tag.name}
           </span>
         ))}
