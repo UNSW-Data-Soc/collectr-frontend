@@ -1,3 +1,6 @@
+import type { Tag } from "./tag";
+
+
 export interface Resource {
   id: string;
   title: string;
@@ -16,9 +19,3 @@ export interface ResourceTag {
   tagId: string;
   tag: Tag;
 }
-
-interface Tag {
-  id: string;
-  name: string;
-  colour: string;
-};
