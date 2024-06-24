@@ -1,0 +1,44 @@
+name: learn-github-actions
+
+on: [push]
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+  lint:
+    name: Lint
+    needs: [setup]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run ESLint
+        run: npm run lint
+
+  build:
+    name: Build
+    needs: [setup]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build project
+        run: npm run build
+
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Prettier
+        run: npm run format:ci
