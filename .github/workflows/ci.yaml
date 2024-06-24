@@ -3,8 +3,8 @@ name: checks
 on: [push]
 
 jobs:
-  setup:
-    name: Setup
+  check:
+    name: Checks
     runs-on: ubuntu-latest
 
     steps:
@@ -17,28 +17,11 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
-  lint:
-    name: Lint
-    needs: [setup]
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Run ESLint
+      - name: Lint (ESLint)
         run: npm run lint
 
-  build:
-    name: Build
-    needs: [setup]
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Build project
         run: npm run build
 
-  format:
-    name: Format
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Run Prettier
+      - name: Format (Prettier)
         run: npm run format:ci
