@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 
-import { Home, LogOut, MediaImage, Planet } from "iconoir-react";
+import { Home, LogOut, MediaImage, Planet, Community } from "iconoir-react";
 
 import { cn } from "../lib/utils";
 import { logout } from "../api/auth";
@@ -20,6 +20,11 @@ const navbarPages = [
     icon: <Planet height={24} />,
     children: "Events",
     to: "/events",
+  },
+  {
+    icon: <Community height={24} />,
+    children: "Sponsorships",
+    to: "/sponsorships",
   },
 ];
 
