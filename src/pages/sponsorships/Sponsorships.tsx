@@ -31,7 +31,11 @@ export default function Sponsorships() {
           Add Sponsor
         </ToolbarButton>
       </div>
-      <div>{/* {map to sponsorships card} */}</div>
+      <div className="flex flex-row flex-wrap items-start justify-start gap-5">
+        {sponsorships.map((s) => (
+          <Sponsorships key={s.id} company={company} />
+        ))}
+      </div>
     </main>
   );
 }
