@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-import { PlusCircle, Sort } from "iconoir-react";
+import { PlusCircle, Sort, SortDown } from "iconoir-react";
 
 import { getCoverPhotos } from "../../api/coverPhotos";
 import type { CoverPhoto } from "../../types/coverphoto";
@@ -8,22 +8,38 @@ import type { CoverPhoto } from "../../types/coverphoto";
 import ToolbarButton from "../../components/ToolbarButton";
 import CoverPhotoCard from "./CoverPhotoCard";
 
+type SortingStrategy = "asc" | "desc";
+
 export default function CoverPhotos() {
   const [isLoading, setIsLoading] = useState(true);
   const [coverPhotos, setCoverPhotos] = useState<CoverPhoto[]>([]);
+  const [sortingStrategy, setSortingStrategy] =
+    useState<SortingStrategy>("desc");
+
+  const toggleSortingStrategy = useCallback(() => {
+    setSortingStrategy((prev) => (prev === "asc" ? "desc" : "asc"));
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
-      // TODO: remove this setTimeout -- just to simulate an artificial delay
-      void getCoverPhotos().then((data) =>
-        setCoverPhotos(
-          data.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1))
-        )
-      );
-      setIsLoading(false);
-    }, 1000);
+    void getCoverPhotos().then((data) =>
+      setCoverPhotos(data.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1)))
+    );
+    setIsLoading(false);
   }, []);
+
+  useEffect(() => {
+    console.log(sortingStrategy);
+    setCoverPhotos((prev) =>
+      prev.sort((a, b) => {
+        if (sortingStrategy === "asc") {
+          return a.createdAt > b.createdAt ? -1 : 1;
+        } else {
+          return a.createdAt > b.createdAt ? 1 : -1;
+        }
+      })
+    );
+  }, [sortingStrategy]);
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -34,8 +50,13 @@ export default function CoverPhotos() {
           <PlusCircle className="h-6" />
           New Cover Photo
         </ToolbarButton>
-        <ToolbarButton className="bg-orange-300">
-          <Sort /> Sort by created time
+        <ToolbarButton
+          className="bg-orange-300"
+          onClick={toggleSortingStrategy}
+          disabled={isLoading}
+        >
+          {sortingStrategy === "desc" ? <Sort /> : <SortDown />} Sort by created
+          time
         </ToolbarButton>
       </div>
       <div className="flex flex-row flex-wrap items-start justify-start gap-5">
