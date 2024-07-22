@@ -17,9 +17,7 @@ function MainPage() {
     <main className="flex flex-grow flex-col gap-4 p-10 px-12">
       <header className="space-y-4">
         <PageHeading>Resources</PageHeading>
-        <PageDescription>
-          The resources page.
-        </PageDescription>
+        <PageDescription>The resources page.</PageDescription>
       </header>
       <div className="flex-grow space-y-4">
         <Resources />

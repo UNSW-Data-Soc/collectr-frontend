@@ -3,7 +3,6 @@
 // import { Trash } from "iconoir-react";
 import type { ResourceTag } from "../../types/resources";
 
-
 export default function ResourceCard({
   resource,
 }: {
@@ -17,7 +16,7 @@ export default function ResourceCard({
   };
 }) {
   return (
-    <div className="group relative max-w-xl p-4 border rounded-md shadow-md">
+    <div className="group relative max-w-xl rounded-md border p-4 shadow-md">
       {/* <div className="absolute left-0 top-0 h-full w-full bg-slate-700/50 p-5 text-white opacity-0 transition-opacity group-hover:opacity-100">
         <p>
           ID:{" "}
@@ -40,14 +39,23 @@ export default function ResourceCard({
           Delete
         </button>
       </div> */}
-      <h2 className="font-bold text-lg">{resource.title}</h2>
+      <h2 className="text-lg font-bold">{resource.title}</h2>
       <p>{resource.description}</p>
-      <a href={resource.link} rel="noreferrer" target="_blank" className="text-blue-500 hover:underline">
+      <a
+        href={resource.link}
+        rel="noreferrer"
+        target="_blank"
+        className="text-blue-500 hover:underline"
+      >
         Open Resource
       </a>
       <div className="mt-2">
         {resource.tags.map(({ tag }) => (
-          <span key={tag.id} className="inline-block px-2 py-1 mr-2 text-xs rounded" style={{ backgroundColor: tag.colour, color: "#FFFFFF" }}>
+          <span
+            key={tag.id}
+            className="mr-2 inline-block rounded px-2 py-1 text-xs"
+            style={{ backgroundColor: tag.colour, color: "#FFFFFF" }}
+          >
             {tag.name}
           </span>
         ))}
