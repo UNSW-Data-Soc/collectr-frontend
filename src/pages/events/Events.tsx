@@ -8,7 +8,6 @@ import type { Event } from "../../types/eventsType";
 import ToolbarButton from "../../components/ToolbarButton";
 import EventsCard from "../events/EventsCard";
 
-
 export default function Events() {
   const [isLoading, setIsLoading] = useState(true);
   const [events, setEvents] = useState<Event[]>([]);
@@ -18,9 +17,7 @@ export default function Events() {
     setTimeout(() => {
       // TODO: remove this setTimeout -- just to simulate an artificial delay
       void getEvents().then((data) =>
-        setEvents(
-          data.sort((a, b) => (a.startTime > b.startTime ? -1 : 1))
-        )
+        setEvents(data.sort((a, b) => (a.startTime > b.startTime ? -1 : 1)))
       );
       setIsLoading(false);
     }, 1000);
@@ -41,7 +38,16 @@ export default function Events() {
       </div>
       <div className="flex flex-row flex-wrap items-start justify-start gap-5">
         {events.map((event) => (
-          <EventsCard key={event.id} id={event.id} title={event.title} slug={event.slug} startTime={event.startTime} endTime={event.endTime} location={event.location} photo={event.photo} />
+          <EventsCard
+            key={event.id}
+            id={event.id}
+            title={event.title}
+            slug={event.slug}
+            startTime={event.startTime}
+            endTime={event.endTime}
+            location={event.location}
+            photo={event.photo}
+          />
         ))}
       </div>
     </>

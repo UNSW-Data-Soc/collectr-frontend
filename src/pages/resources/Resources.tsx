@@ -36,10 +36,7 @@ export default function Resources() {
       </div> */}
       <div className="flex flex-row flex-wrap items-start justify-start gap-5">
         {resources.map((resource) => (
-          <ResourceCard
-            key={resource.id}
-            resource={resource}
-          />
+          <ResourceCard key={resource.id} resource={resource} />
         ))}
       </div>
     </>

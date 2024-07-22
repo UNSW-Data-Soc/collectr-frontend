@@ -1,6 +1,5 @@
 import type { Tag } from "./tag";
 
-
 export interface Resource {
   id: string;
   title: string;
@@ -11,8 +10,8 @@ export interface Resource {
   lastEditTime: Date;
   createdTime: Date;
   tags: ResourceTag[];
-  fileId:string;
-};
+  fileId: string;
+}
 
 export interface ResourceTag {
   resourceId: string;

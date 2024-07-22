@@ -17,12 +17,10 @@ function MainPage() {
     <main className="flex flex-grow flex-col gap-4 p-10 px-12">
       <header className="space-y-4">
         <PageHeading>Events</PageHeading>
-        <PageDescription>
-          List of Datasoc events
-        </PageDescription>
+        <PageDescription>List of Datasoc events</PageDescription>
       </header>
       <div className="flex-grow space-y-4">
-        <Events/>
+        <Events />
       </div>
     </main>
   );
