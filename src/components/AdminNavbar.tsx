@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 
-import { Home, LogOut, MediaImage, Post } from "iconoir-react";
+import { Home, LogOut, MediaImage, Post, Cube, Planet } from "iconoir-react";
 
 import { cn } from "../lib/utils";
 import { logout } from "../api/auth";
@@ -20,6 +20,16 @@ const navbarPages = [
     icon: <MediaImage height={24} />,
     children: "Cover Photos",
     to: "/coverphotos",
+  },
+  {
+    icon: <Cube height={24} />,
+    children: "Resources",
+    to: "/resources",
+  },
+  {
+    icon: <Planet height={24} />,
+    children: "Events",
+    to: "/events",
   },
 ];
 
