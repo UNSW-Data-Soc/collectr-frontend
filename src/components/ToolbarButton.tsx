@@ -4,10 +4,12 @@ export default function ToolbarButton({
   children,
   className,
   onClick,
+  disabled = false,
 }: {
   children?: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  disabled?: boolean;
 }) {
   return (
     <button
@@ -16,6 +18,7 @@ export default function ToolbarButton({
         className
       )}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>
