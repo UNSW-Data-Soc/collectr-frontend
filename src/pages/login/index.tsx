@@ -1,14 +1,26 @@
 import { useState } from "react";
 import { login } from "../../api/auth";
 import { useNavigate } from "react-router-dom";
+import './styles.css';
 
 export default function LoginPage() {
   return (
-    <div>
-      <h1>Login</h1>
-      <p>Here is the login page</p>
-      <LoginForm />
+    <div className="center">
+      <div className="container">
+        <div className="form-container">
+          <div>
+            <h1 className="heading">Sign In</h1>
+            <LoginForm />
+          </div>
+        </div>
+        <div className="sideimage">
+          <div className="backimage">
+            <img src="logo.png" width="80%" height= "20%"></img>
+          </div>
+        </div>
+      </div>
     </div>
+ 
   );
 }
 
@@ -19,6 +31,7 @@ function LoginForm() {
   const [password, setPassword] = useState("");
 
   return (
+
     <form
       onSubmit={(e) => {
         e.preventDefault();
@@ -33,22 +46,29 @@ function LoginForm() {
       }}
     >
       <label>
-        Email
+        <div className="input-box">
         <input
           type="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        </div>
       </label>
+       
       <label>
-        Password
+        <div className="input-box">
         <input
           type="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        </div>
       </label>
-      <button type="submit">Login</button>
+      <div className="butt">
+        <button type="submit">Login</button>
+      </div>
     </form>
   );
 }
